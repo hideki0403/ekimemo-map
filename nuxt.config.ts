@@ -19,6 +19,8 @@ export default defineNuxtConfig({
       nuxt.hooks.hook('vite:extendConfig', config => {
         config.plugins?.push(vuetify())
       })
-    }
+    },
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt'
   ]
 })
