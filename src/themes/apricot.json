@@ -1,0 +1,10 @@
+{
+    "foreground": "#958f8b",
+    "background": "#e6e5e2",
+    "panel": "#eeece8",
+    "accent": "#ea9a52",
+    "success": "#86b300",
+    "info": "#31b1ce",
+    "warning": "#ecb637",
+    "error": "#ec4137"
+}
