@@ -13,11 +13,10 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@types/node": "^18.17.0",
     "nuxt": "^3.6.5",
-    "sass": "^1.64.1",
-    "vite-plugin-vuetify": "^1.0.2",
-    "vuetify": "^3.3.10"
+    "sass": "^1.64.1"
   },
   "dependencies": {
+    "@nuxtjs/google-fonts": "^3.0.2",
     "@pinia/nuxt": "^0.4.11",
     "vue-tabler-icons": "^2.21.0"
   }

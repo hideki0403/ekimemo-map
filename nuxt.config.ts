@@ -1,5 +1,3 @@
-import vuetify from 'vite-plugin-vuetify'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: 'src',
@@ -7,20 +5,23 @@ export default defineNuxtConfig({
     enabled: true
   },
   css: [
-    'vuetify/lib/styles/main.sass'
+    '@/styles/main.scss',
   ],
-  build: {
-    transpile: [
-      'vuetify'
-    ]
-  },
   modules: [
-    async (_, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', config => {
-        config.plugins?.push(vuetify())
-      })
-    },
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          'Noto+Sans+JP': true,
+        },
+        display: 'swap',
+        inject: true,
+      }
+    ],
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt'
-  ]
+  ],
+  devServer: {
+    port: 3001
+  }
 })

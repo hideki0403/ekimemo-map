@@ -1,21 +1,12 @@
 <template>
-    <VApp>
-        <VContainer>
-            <main>
-                <slot />
-            </main>
-        </VContainer>
-        <VBottomNavigation>
-            <VBtn  v-for="navigation in navigations" :key="navigation.text" :to="navigation.to" exact text>
-                <VIcon :icon="navigation.icon" />
-                <span class="hidden-sm-and-down">{{ navigation.text }}</span>
-            </VBtn>
-        </VBottomNavigation>
-    </VApp>
+    <main>
+        <slot />
+    </main>
 </template>
 
 <script setup>
 import { HomeIcon, ListIcon, SettingsIcon } from 'vue-tabler-icons'
+import { useThemeStore } from '@/store/theme'
 
 const navigations = [{
     icon: HomeIcon,
@@ -30,4 +21,7 @@ const navigations = [{
     text: '設定',
     to: '/settings'
 }]
+
+const themeStore = useThemeStore()
+
 </script>
