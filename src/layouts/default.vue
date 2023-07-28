@@ -1,12 +1,18 @@
 <template>
-    <main>
-        <slot />
-    </main>
+    <div class="container mx-auto px-8" :class="$style.root">
+        <main>
+            <slot />
+        </main>
+    </div>
+    <MeBottomNavigator :navigations="navigations" />
 </template>
 
 <script setup>
+import boot from '@/scripts/boot'
+import MeBottomNavigator from '@/components/MeBottomNavigator.vue'
 import { HomeIcon, ListIcon, SettingsIcon } from 'vue-tabler-icons'
-import { useThemeStore } from '@/store/theme'
+
+boot()
 
 const navigations = [{
     icon: HomeIcon,
@@ -22,6 +28,10 @@ const navigations = [{
     to: '/settings'
 }]
 
-const themeStore = useThemeStore()
-
 </script>
+
+<style module lang="scss">
+.root {
+    padding-top: 12px;
+}
+</style>
