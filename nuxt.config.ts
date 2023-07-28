@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   srcDir: 'src',
   devtools: {
     enabled: true
@@ -8,6 +9,7 @@ export default defineNuxtConfig({
     '@/styles/main.scss',
   ],
   modules: [
+    '@nuxtjs/tailwindcss',
     [
       '@nuxtjs/google-fonts',
       {
