@@ -1,15 +1,15 @@
 import tinycolor from 'tinycolor2'
-import { defaultStore } from '@/scripts/store'
+import { settingsStore } from '@/scripts/store'
 import { getTheme } from '@/themes'
 
 export function watchThemeChange() {
-    defaultStore.watch(['useDarkMode', 'lightTheme', 'darkTheme'], applyTheme)
+    settingsStore.watch(['useDarkMode', 'lightTheme', 'darkTheme'], applyTheme)
 }
 
 export function applyTheme() {
-    const useDarkMode = defaultStore.get('useDarkMode')
-    const lightTheme = defaultStore.get('lightTheme')
-    const darkTheme = defaultStore.get('darkTheme')
+    const useDarkMode = settingsStore.get('useDarkMode')
+    const lightTheme = settingsStore.get('lightTheme')
+    const darkTheme = settingsStore.get('darkTheme')
 
     const theme = getTheme(useDarkMode ? darkTheme : lightTheme)
     const additionalColors = {

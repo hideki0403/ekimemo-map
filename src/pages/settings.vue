@@ -11,9 +11,9 @@
 import * as themes from '@/themes'
 import MeSelect from '@/components/MeSelect.vue'
 import MeSwitch from '@/components/MeSwitch.vue'
-import { defaultStore } from '@/scripts/store'
+import { settingsStore } from '@/scripts/store'
 
-const useDarkMode = computed(defaultStore.toModel('useDarkMode'))
-const lightTheme = computed(defaultStore.toModel('lightTheme'))
-const darkTheme = computed(defaultStore.toModel('darkTheme'))
+const useDarkMode = computed(settingsStore.toModel('useDarkMode'))
+const lightTheme = computed(settingsStore.toModel('lightTheme'))
+const darkTheme = computed(settingsStore.toModel('darkTheme'))
 </script>
