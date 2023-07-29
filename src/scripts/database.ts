@@ -15,6 +15,7 @@ export interface Station {
     postal_code: string
     address: string
     open_date: string
+    next: number[]
     voronoi: {
         type: string
         geometry: {
@@ -34,6 +35,15 @@ export interface Line {
     company_code: number
     closed: boolean
     color: string
+    station_list: {
+        code: number
+        name: string
+    }[]
+    polyline_list: {
+        type: string
+        features: {}
+        properties: {}
+    }
 }
 
 class StationCache extends Dexie {
@@ -43,8 +53,8 @@ class StationCache extends Dexie {
     constructor() {
         super('stations')
         this.version(1).stores({
-            stations: 'code, id, name, original_name, name_kana, closed, lat, lng, prefecture, lines, attr, postal_code, address, open_date, voronoi',
-            lines: 'code, id, name, name_kana, station_size, company_code, closed, color'
+            stations: 'id, code, name, original_name, name_kana, closed, lat, lng, prefecture, lines, attr, postal_code, address, open_date, next, voronoi',
+            lines: 'id, code, name, name_kana, station_size, company_code, closed, color, station_list, polyline_list'
         })
     }
 }
