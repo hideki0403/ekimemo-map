@@ -20,6 +20,9 @@
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.2",
     "@pinia/nuxt": "^0.4.11",
+    "dayjs": "^1.11.9",
+    "dexie": "^3.2.4",
+    "geolib": "^3.3.4",
     "tinycolor2": "^1.6.0",
     "vue-tabler-icons": "^2.21.0"
   }
