@@ -9,26 +9,32 @@ type ItemKeys<T extends StoreItem, V> = {
     [K in keyof T]: V
 }
 
+type StateStore<T extends StoreItem> = {
+    [K in keyof T]: T[K]['default']
+}
+
 class Store<T extends StoreItem> {
     private key: string
     private store: T
+    private state: StateStore<T>
     private watchers: ItemKeys<T, Function[]>
 
     constructor(key: string, store: T) {
         const rawStorage = localStorage.getItem(`store::${key}`)
-        const storage = rawStorage ? JSON.parse(rawStorage) : {}
+        const storage: StateStore<T> = rawStorage ? JSON.parse(rawStorage) : {}
 
         this.key = key
-        this.store = Object.assign(storage, store)
+        this.store = store
+        this.state = storage
         this.watchers = {} as ItemKeys<T, Function[]>
     }
 
     public get<K extends keyof T>(key: K): T[K]['default'] {
-        return this.store[key].value ?? this.store[key].default
+        return this.state[key] ?? this.store[key].default
     }
 
     public set<K extends keyof T>(key: K, value: T[K]['default']) {
-        this.store[key].value = value
+        this.state[key] = value
         if (this.watchers[key]) this.watchers[key].forEach((callback) => callback(value))
         this.save()
     }
@@ -51,11 +57,11 @@ class Store<T extends StoreItem> {
     }
 
     public save() {
-        localStorage.setItem(`store::${this.key}`, JSON.stringify(this.store))
+        localStorage.setItem(`store::${this.key}`, JSON.stringify(this.state))
     }
 }
 
-export const defaultStore = new Store('settings', {
+export const settingsStore = new Store('settings', {
     useDarkMode: {
         default: true
     },
@@ -64,5 +70,14 @@ export const defaultStore = new Store('settings', {
     },
     lightTheme: {
         default: 'Apricot'
+    },
+})
+
+export const stateStore = new Store('state', {
+    lastCheck: {
+        default: new Date('2023-07-01').toISOString()
+    },
+    currentVersion: {
+        default: ''
     },
 })
