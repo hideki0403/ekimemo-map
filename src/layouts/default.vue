@@ -1,4 +1,5 @@
 <template>
+    <VitePwaManifest />
     <div class="container mx-auto px-8" :class="$style.root">
         <main>
             <slot />
