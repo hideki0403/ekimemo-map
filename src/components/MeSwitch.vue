@@ -5,7 +5,7 @@
     	<span :class="[$style.button, { [$style.checked]: switchValue }]" @click.prevent="toggle">
     		<div :class="$style.knob"></div>
     	</span>
-        <span :class="$style.text" @click="toggle">{{ text }}</span>
+        <span :class="$style.text" @click="toggle"><slot></slot></span>
     </div>
 </template>
 
@@ -13,11 +13,11 @@
 const props = defineProps<{
     modelValue: boolean,
     label?: string,
-    text: string,
 }>()
 
 const emit = defineEmits<{
     (event: 'update:modelValue', value: boolean): void
+    (event: 'click'): void
 }>()
 
 const { modelValue } = toRefs(props)
@@ -30,6 +30,7 @@ watch(modelValue, (v) => {
 function toggle() {
     switchValue.value = !switchValue.value
     emit('update:modelValue', switchValue.value)
+    emit('click')
 }
 </script>
 
