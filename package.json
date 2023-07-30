@@ -11,7 +11,6 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@types/node": "^18.17.0",
     "@types/tinycolor2": "^1.4.3",
     "@vite-pwa/nuxt": "^0.1.0",
@@ -20,7 +19,6 @@
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.2",
-    "@pinia/nuxt": "^0.4.11",
     "dayjs": "^1.11.9",
     "dexie": "^3.2.4",
     "geolib": "^3.3.4",

@@ -11,8 +11,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
-    '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
     '@vite-pwa/nuxt',
   ],
   pwa: {
