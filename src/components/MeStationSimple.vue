@@ -59,7 +59,7 @@ function updateReminderTime() {
 
         if (cooldownSeconds - reminderTimeSeconds < 0) {
             reminderTimeSeconds = 0
-            showStationNotification(props.data)
+            showStationNotification(props.data, true)
         }
 
         setTimeout(updateReminderTime, 1000)

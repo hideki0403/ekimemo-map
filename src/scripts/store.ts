@@ -82,7 +82,10 @@ export const settingsStore = new Store('settings', {
     },
     enableStationReminder: {
         default: true
-    }
+    },
+    enableNotification: {
+        default: false
+    },
 })
 
 export const stateStore = new Store('state', {
