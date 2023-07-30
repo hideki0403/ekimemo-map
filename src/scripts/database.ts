@@ -46,17 +46,54 @@ export interface Line {
     }
 }
 
+export interface TreeNode {
+    code: number
+    name: string
+    lat: number
+    lng: number
+    left?: number
+    right?: number
+    segment?: string
+}
+
+export interface TreeSegments {
+    name: string
+    root: number
+    node_list: TreeNode[]
+}
+
+export interface AccessLog {
+    id: string
+    firstAccess: string
+    lastAccess: string
+    accessCount: number
+}
+
 class StationCache extends Dexie {
     stations!: Table<Station>
     lines!: Table<Line>
+    treeSegments!: Table<TreeSegments>
 
     constructor() {
-        super('stations')
+        super('cache')
         this.version(1).stores({
-            stations: 'id, code, name, original_name, name_kana, closed, lat, lng, prefecture, lines, attr, postal_code, address, open_date, next, voronoi',
-            lines: 'id, code, name, name_kana, station_size, company_code, closed, color, station_list, polyline_list'
+            stations: 'code, id, name, original_name, name_kana, closed, lat, lng, prefecture, lines, attr, postal_code, address, open_date, next, voronoi',
+            lines: 'code, id, name, name_kana, station_size, company_code, closed, color, station_list, polyline_list',
+            treeSegments: 'name, root, node_list',
+        })
+    }
+}
+
+class States extends Dexie {
+    accessLog!: Table<AccessLog>
+
+    constructor() {
+        super('states')
+        this.version(1).stores({
+            accessLog: 'id, firstAccess, lastAccess, accessCount',
         })
     }
 }
 
 export const cache = new StationCache()
+export const states = new States()
