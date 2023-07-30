@@ -71,6 +71,18 @@ export const settingsStore = new Store('settings', {
     lightTheme: {
         default: 'Apricot'
     },
+    stationResultCount: {
+        default: 18
+    },
+    stationResultSort: {
+        default: 'game' as 'game' | 'real' // TODO
+    },
+    cooldownSeconds: {
+        default: 320
+    },
+    enableStationReminder: {
+        default: true
+    }
 })
 
 export const stateStore = new Store('state', {
