@@ -12,6 +12,10 @@ export function beautifyScale(scale: number) {
     return scale < 1000 ? `${scale.toFixed(0)}m` : `${(scale / 1000).toFixed(1)}km`
 }
 
-export function beautifySeconds(seconds: number) {
-    return `${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, '0')}`
+export function beautifySeconds(seconds: number, jp = false) {
+    if (jp) {
+        return `${Math.floor(seconds / 60)}分${(seconds % 60)}秒`
+    } else {
+        return `${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, '0')}`
+    }
 }
