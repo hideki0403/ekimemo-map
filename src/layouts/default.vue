@@ -10,7 +10,7 @@
 <script setup>
 import boot from '@/scripts/boot'
 import MeBottomNavigator from '@/components/MeBottomNavigator.vue'
-import { HomeIcon, ListIcon, SettingsIcon } from 'vue-tabler-icons'
+import { HomeIcon, MapIcon, SettingsIcon } from 'vue-tabler-icons'
 
 boot()
 
@@ -19,9 +19,9 @@ const navigations = [{
     text: '駅サーチ',
     to: '/'
 }, {
-    icon: ListIcon,
-    text: 'リスト',
-    to: '/list'
+    icon: MapIcon,
+    text: 'マップ',
+    to: '/map'
 }, {
     icon: SettingsIcon,
     text: '設定',
@@ -33,5 +33,6 @@ const navigations = [{
 <style module lang="scss">
 .root {
     padding-top: 12px;
+    padding-bottom: 80px;
 }
 </style>
