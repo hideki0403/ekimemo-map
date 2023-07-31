@@ -13,6 +13,11 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@vite-pwa/nuxt',
   ],
+  vite: {
+    build: {
+      target: 'esnext',
+    }
+  },
   pwa: {
     registerType: 'autoUpdate',
     registerWebManifestInRouteRules: true,
@@ -20,15 +25,12 @@ export default defineNuxtConfig({
       name: '駅サーチ',
       short_name: '駅サーチ',
       description: '近くにある駅一覧を確認できるWebアプリ',
+      lang: 'ja',
     },
     workbox: {
       navigateFallback: '/',
       importScripts: ['static/sw.js']
     },
-    devOptions: {
-      enabled: true,
-      type: 'module'
-    }
   },
   googleFonts: {
     families: {
