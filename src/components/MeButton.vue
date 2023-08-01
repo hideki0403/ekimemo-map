@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+defineProps<{
     type?: 'button' | 'submit' | 'reset'
     primary?: boolean | Ref<boolean>
     danger?: boolean
@@ -31,11 +31,11 @@ const emit = defineEmits<{
 	border-radius: 5px;
 	transition: background 0.1s ease;
 
-	&:hover {
+	&:hover:not(:disabled) {
         border-color: var(--color-accent) !important;
 	}
 
-    &:active {
+    &:active:not(:disabled) {
         background: rgba(0, 0, 0, 0.1) !important;
     }
 
@@ -48,5 +48,10 @@ const emit = defineEmits<{
 		background: var(--color-accent-background);
         border-color: var(--color-accent-background);
 	}
+
+    &:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+    }
 }
 </style>
