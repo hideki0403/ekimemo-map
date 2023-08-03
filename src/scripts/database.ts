@@ -97,3 +97,9 @@ class States extends Dexie {
 
 export const cache = new StationCache()
 export const states = new States()
+
+export async function cacheClear() {
+    await cache.stations.clear()
+    await cache.lines.clear()
+    await cache.treeSegments.clear()
+}
