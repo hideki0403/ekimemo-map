@@ -1,5 +1,5 @@
 <template>
-    <button :type="type" :class="[$style.root, { [$style.primary]: primary, [$style.danger]: danger, [$style.rounded]: rounded }]" @click="emit('click', $event)">
+    <button :type="type" :class="[$style.root, { [$style.rounded]: rounded, [$style[$props.color ?? '']]: color  }]" @click="emit('click', $event)">
         <slot></slot>
     </button>
 </template>
@@ -7,8 +7,7 @@
 <script lang="ts" setup>
 defineProps<{
     type?: 'button' | 'submit' | 'reset'
-    primary?: boolean | Ref<boolean>
-    danger?: boolean
+    color?: 'primary' | 'info' | 'success' | 'warning' | 'danger' | null
     to?: string
     rounded?: boolean
 }>()
@@ -48,6 +47,30 @@ const emit = defineEmits<{
 		background: var(--color-accent-background);
         border-color: var(--color-accent-background);
 	}
+
+    &.info {
+        color: var(--color-info);
+        background: var(--color-info-background);
+        border-color: var(--color-info-background);
+    }
+
+    &.success {
+        color: var(--color-success);
+        background: var(--color-success-background);
+        border-color: var(--color-success-background);
+    }
+
+    &.warning {
+        color: var(--color-warning);
+        background: var(--color-warning-background);
+        border-color: var(--color-warning-background);
+    }
+
+    &.danger {
+        color: var(--color-error);
+        background: var(--color-error-background);
+        border-color: var(--color-error-background);
+    }
 
     &:disabled {
         opacity: 0.8;

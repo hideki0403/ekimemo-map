@@ -1,5 +1,5 @@
 <template>
-    <MeButton :primary="isGpsActive" @click="toggleGps">
+    <MeButton :color="isGpsActive ? 'primary' : null" @click="toggleGps">
         <CurrentLocationIcon v-if="!isGpsActive" />
         <CurrentLocationOffIcon v-else />
         位置情報{{ isGpsActive ? 'ON' : 'OFF' }}
